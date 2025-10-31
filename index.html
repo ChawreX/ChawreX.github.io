@@ -1,81 +1,256 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ChawreX | Owais Chawre Portfolio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChawreX | SEO & Performance Marketing</title>
   <style>
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
+      background-color: #000;
+      color: #fff;
+    }
+
+    header {
       background-color: #0A0A0A;
-      color: #BFBFBF;
-      text-align: center;
-    }
-    .banner {
-      background: url('banner.png') no-repeat center center/cover;
-      height: 600px;
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      padding-left: 100px;
-    }
-    .content {
-      max-width: 600px;
       text-align: left;
+      padding: 60px 10%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
-    h1 {
+
+    header img {
+      height: 80px;
+      border-radius: 12px;
+    }
+
+    header h1 {
       color: #D4AF37;
-      font-size: 64px;
-      margin-bottom: 10px;
-    }
-    h2 {
-      color: #BFBFBF;
-      font-size: 22px;
+      font-size: 48px;
       margin: 0;
     }
-    p {
-      color: #9A9A9A;
-      font-size: 16px;
-      margin-top: 15px;
+
+    header h3 {
+      color: #aaa;
+      margin: 10px 0 20px;
     }
-    .portfolio-link {
-      margin-top: 25px;
-      display: inline-block;
-      padding: 12px 25px;
-      border: 1px solid #D4AF37;
-      border-radius: 8px;
+
+    header p {
+      color: #ccc;
+      font-size: 16px;
+      margin: 0;
+    }
+
+    .banner {
+      background-color: #0A0A0A;
+      background-image: url('banner.png'); /* Make sure banner.png is uploaded */
+      background-size: cover;
+      background-position: center;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: left;
+      padding-left: 10%;
+      text-shadow: 0 0 10px rgba(0,0,0,0.6);
+    }
+
+    .banner-text {
+      background: rgba(0,0,0,0.6);
+      padding: 20px 40px;
+      border-radius: 12px;
+    }
+
+    .banner-text h1 {
+      font-size: 52px;
       color: #D4AF37;
-      text-decoration: none;
+      margin: 0;
+    }
+
+    .banner-text h3 {
+      color: #ccc;
+      margin: 10px 0;
+    }
+
+    .banner-text p {
+      color: #aaa;
+      margin: 5px 0;
+    }
+
+    /* Project Section */
+    .projects {
+      padding: 60px 10%;
+      background-color: #0A0A0A;
+      text-align: center;
+    }
+
+    .projects h2 {
+      color: #D4AF37;
+      font-size: 36px;
+      margin-bottom: 40px;
+      border-bottom: 1px solid #D4AF37;
+      display: inline-block;
+      padding-bottom: 10px;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+    }
+
+    .project {
+      background-color: #111;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(212,175,55,0.1);
       transition: 0.3s;
     }
-    .portfolio-link:hover {
-      background-color: #D4AF37;
-      color: #0A0A0A;
+
+    .project:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 15px rgba(212,175,55,0.25);
     }
+
+    .project img {
+      height: 60px;
+      margin-bottom: 20px;
+    }
+
+    .project h3 {
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .project p {
+      color: #aaa;
+      font-size: 15px;
+      margin-bottom: 15px;
+    }
+
+    .project a {
+      color: #D4AF37;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .project a:hover {
+      text-decoration: underline;
+    }
+
     footer {
-      margin-top: 40px;
-      padding: 20px;
+      background-color: #0A0A0A;
+      color: #888;
+      text-align: center;
+      padding: 25px 0;
       font-size: 14px;
-      color: #777;
+      border-top: 1px solid #222;
     }
+
   </style>
 </head>
-<body>
 
-  <div class="banner">
-    <div class="content">
+<body>
+  <header>
+    <div>
       <h1>ChawreX</h1>
-      <h2>Owais Chawre | Full-Stack SEO & Performance Marketing</h2>
+      <h3>Owais Chawre | Full-Stack SEO & Performance Marketing</h3>
       <p>Explore case studies, client work & marketing experiments</p>
-      <a href="https://www.notion.so/your-notion-portfolio-link" class="portfolio-link" target="_blank">View Full Portfolio</a>
     </div>
-  </div>
+    <img src="logo.png" alt="ChawreX Logo">
+  </header>
+
+  <section class="banner">
+    <div class="banner-text">
+      <h1>Welcome to ChawreX</h1>
+      <h3>Where Strategy Meets Execution</h3>
+      <p><a href="https://www.notion.so/your-notion-portfolio-link" target="_blank" style="color:#D4AF37; text-decoration:none;">→ View Full Portfolio</a></p>
+    </div>
+  </section>
+
+  <!-- PROJECT SECTIONS -->
+  <section class="projects">
+    <h2>Client Work & Marketing Projects</h2>
+    <div class="project-grid">
+
+      <!-- SEO Projects -->
+      <div class="project">
+        <img src="https://bobbykurb.com/favicon.ico" alt="SEO Icon">
+        <h3>SEO Projects</h3>
+        <p>Technical, On-Page & Off-Page SEO for high-performance organic growth and visibility.</p>
+        <ul style="list-style:none; color:#aaa; padding:0;">
+          <li>• BobbyKurb – Backlink & Authority Strategy</li>
+          <li>• UnderwaterZone – Blog SEO & Technical Fixes</li>
+          <li>• Umenit – AI-Integrated SEO Architecture</li>
+        </ul>
+      </div>
+
+      <!-- Google Ads Projects -->
+      <div class="project">
+        <img src="https://cdn-icons-png.flaticon.com/512/2965/2965358.png" alt="Google Ads Logo">
+        <h3>Google Ads Projects</h3>
+        <p>Conversion-focused campaigns built using AI-powered performance insights and advanced tracking.</p>
+        <ul style="list-style:none; color:#aaa; padding:0;">
+          <li>• AI-Powered Campaigns (Google Skillshop Certified)</li>
+          <li>• Search, Display & Shopping Ads</li>
+          <li>• Conversion Optimization Experiments</li>
+        </ul>
+      </div>
+
+      <!-- Meta Ads Projects -->
+      <div class="project">
+        <img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" alt="Meta Logo">
+        <h3>Meta Ads Projects</h3>
+        <p>Creative-led campaigns for brand awareness and local engagement across Meta’s ecosystem.</p>
+        <ul style="list-style:none; color:#aaa; padding:0;">
+          <li>• Shawarma Centre – Local Awareness Ads</li>
+          <li>• Silver Jewelry Brand – Festive Campaign</li>
+          <li>• Food Truck Launch – Pre-launch Ads</li>
+        </ul>
+      </div>
+
+      <!-- Email Marketing -->
+      <div class="project">
+        <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email Icon">
+        <h3>Email Marketing</h3>
+        <p>Strategic email sequences designed to boost engagement, retention, and conversions.</p>
+        <ul style="list-style:none; color:#aaa; padding:0;">
+          <li>• Lead Nurturing Automation</li>
+          <li>• Monthly Newsletter Campaigns</li>
+          <li>• Personalized Segmentation & Flows</li>
+        </ul>
+      </div>
+
+      <!-- LinkedIn Ads -->
+      <div class="project">
+        <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn Logo">
+        <h3>LinkedIn Ads</h3>
+        <p>B2B awareness and lead-gen ad setups for startups and service-based businesses.</p>
+        <ul style="list-style:none; color:#aaa; padding:0;">
+          <li>• Awareness Campaign Frameworks</li>
+          <li>• Lead-Gen Form Ads</li>
+          <li>• Industry Targeting via Job Titles</li>
+        </ul>
+      </div>
+
+      <!-- Generative AI -->
+      <div class="project">
+        <img src="https://cdn-icons-png.flaticon.com/512/4712/4712109.png" alt="AI Icon">
+        <h3>Generative AI Projects</h3>
+        <p>AI-driven creative workflows integrating ChatGPT, Google AI Studio & Canva automation.</p>
+        <ul style="list-style:none; color:#aaa; padding:0;">
+          <li>• AI-Powered Ad Copy & SEO Content</li>
+          <li>• Canva + AI Visual Storytelling</li>
+          <li>• Workflow Automation for Marketers</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
 
   <footer>
-    <img src="logo.png" alt="ChawreX Logo" width="80" style="margin-bottom:10px;"><br>
-    © 2025 ChawreX. All rights reserved.
+    <p>© 2025 ChawreX | Built by Owais Chawre with 💛 and AI</p>
   </footer>
-
 </body>
 </html>
