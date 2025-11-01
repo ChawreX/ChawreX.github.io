@@ -12,75 +12,50 @@
       color: #fff;
     }
 
+    /* HEADER (Hero Section) */
     header {
       background-color: #0A0A0A;
       text-align: left;
-      padding: 60px 10%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    header img {
-      height: 80px;
-      border-radius: 12px;
+      padding: 100px 10%;
     }
 
     header h1 {
       color: #D4AF37;
-      font-size: 48px;
+      font-size: 60px;
       margin: 0;
     }
 
     header h3 {
-      color: #aaa;
-      margin: 10px 0 20px;
+      color: #ccc;
+      margin: 15px 0 10px;
+      font-size: 22px;
     }
 
     header p {
-      color: #ccc;
-      font-size: 16px;
-      margin: 0;
-    }
-
-    .banner {
-      background-color: #0A0A0A;
-      background-image: url('banner.png'); /* Make sure banner.png is uploaded */
-      background-size: cover;
-      background-position: center;
-      height: 400px;
-      display: flex;
-      align-items: center;
-      justify-content: left;
-      padding-left: 10%;
-      text-shadow: 0 0 10px rgba(0,0,0,0.6);
-    }
-
-    .banner-text {
-      background: rgba(0,0,0,0.6);
-      padding: 20px 40px;
-      border-radius: 12px;
-    }
-
-    .banner-text h1 {
-      font-size: 52px;
-      color: #D4AF37;
-      margin: 0;
-    }
-
-    .banner-text h3 {
-      color: #ccc;
-      margin: 10px 0;
-    }
-
-    .banner-text p {
       color: #aaa;
-      margin: 5px 0;
+      font-size: 16px;
+      margin: 0 0 20px;
     }
 
-    /* Project Section */
+    .cta-btn {
+      display: inline-block;
+      padding: 10px 25px;
+      border: 1px solid #D4AF37;
+      color: #D4AF37;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .cta-btn:hover {
+      background-color: #D4AF37;
+      color: #000;
+    }
+
+    /* PROJECT SECTION */
     .projects {
-      padding: 60px 10%;
+      padding: 80px 10%;
       background-color: #0A0A0A;
       text-align: center;
     }
@@ -88,7 +63,7 @@
     .projects h2 {
       color: #D4AF37;
       font-size: 36px;
-      margin-bottom: 40px;
+      margin-bottom: 50px;
       border-bottom: 1px solid #D4AF37;
       display: inline-block;
       padding-bottom: 10px;
@@ -113,11 +88,6 @@
       box-shadow: 0 0 15px rgba(212,175,55,0.25);
     }
 
-    .project img {
-      height: 60px;
-      margin-bottom: 20px;
-    }
-
     .project h3 {
       color: #fff;
       margin-bottom: 10px;
@@ -127,6 +97,13 @@
       color: #aaa;
       font-size: 15px;
       margin-bottom: 15px;
+    }
+
+    .project ul {
+      list-style: none;
+      color: #aaa;
+      padding: 0;
+      margin: 0;
     }
 
     .project a {
@@ -147,103 +124,57 @@
       font-size: 14px;
       border-top: 1px solid #222;
     }
-
   </style>
 </head>
 
 <body>
+  <!-- HERO SECTION -->
   <header>
-    <div>
-      <h1>ChawreX</h1>
-      <h3>Owais Chawre | Full-Stack SEO & Performance Marketing</h3>
-      <p>Explore case studies, client work & marketing experiments</p>
-    </div>
-    <img src="logo.png" alt="ChawreX Logo">
+    <h1>ChawreX</h1>
+    <h3>Owais Chawre | Full-Stack SEO & Performance Marketing</h3>
+    <p>Explore case studies, client work & marketing experiments</p>
+    <a href="https://www.notion.so/your-notion-portfolio-link" target="_blank" class="cta-btn">→ View Full Portfolio</a>
   </header>
-
-  <section class="banner">
-    <div class="banner-text">
-      <h1>Welcome to ChawreX</h1>
-      <h3>Where Strategy Meets Execution</h3>
-      <p><a href="https://www.notion.so/your-notion-portfolio-link" target="_blank" style="color:#D4AF37; text-decoration:none;">→ View Full Portfolio</a></p>
-    </div>
-  </section>
 
   <!-- PROJECT SECTIONS -->
   <section class="projects">
     <h2>Client Work & Marketing Projects</h2>
     <div class="project-grid">
 
-      <!-- SEO Projects -->
       <div class="project">
-        <img src="https://bobbykurb.com/favicon.ico" alt="SEO Icon">
         <h3>SEO Projects</h3>
         <p>Technical, On-Page & Off-Page SEO for high-performance organic growth and visibility.</p>
-        <ul style="list-style:none; color:#aaa; padding:0;">
-          <li>• BobbyKurb – Backlink & Authority Strategy</li>
-          <li>• UnderwaterZone – Blog SEO & Technical Fixes</li>
-          <li>• Umenit – AI-Integrated SEO Architecture</li>
         </ul>
       </div>
 
-      <!-- Google Ads Projects -->
       <div class="project">
-        <img src="https://cdn-icons-png.flaticon.com/512/2965/2965358.png" alt="Google Ads Logo">
         <h3>Google Ads Projects</h3>
         <p>Conversion-focused campaigns built using AI-powered performance insights and advanced tracking.</p>
-        <ul style="list-style:none; color:#aaa; padding:0;">
-          <li>• AI-Powered Campaigns (Google Skillshop Certified)</li>
-          <li>• Search, Display & Shopping Ads</li>
-          <li>• Conversion Optimization Experiments</li>
         </ul>
       </div>
 
-      <!-- Meta Ads Projects -->
       <div class="project">
-        <img src="https://cdn-icons-png.flaticon.com/512/124/124010.png" alt="Meta Logo">
         <h3>Meta Ads Projects</h3>
         <p>Creative-led campaigns for brand awareness and local engagement across Meta’s ecosystem.</p>
-        <ul style="list-style:none; color:#aaa; padding:0;">
-          <li>• Shawarma Centre – Local Awareness Ads</li>
-          <li>• Silver Jewelry Brand – Festive Campaign</li>
-          <li>• Food Truck Launch – Pre-launch Ads</li>
-        </ul>
+        <ul>
       </div>
 
-      <!-- Email Marketing -->
       <div class="project">
-        <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email Icon">
         <h3>Email Marketing</h3>
         <p>Strategic email sequences designed to boost engagement, retention, and conversions.</p>
-        <ul style="list-style:none; color:#aaa; padding:0;">
-          <li>• Lead Nurturing Automation</li>
-          <li>• Monthly Newsletter Campaigns</li>
-          <li>• Personalized Segmentation & Flows</li>
-        </ul>
+        <ul>
       </div>
 
-      <!-- LinkedIn Ads -->
       <div class="project">
-        <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn Logo">
         <h3>LinkedIn Ads</h3>
         <p>B2B awareness and lead-gen ad setups for startups and service-based businesses.</p>
-        <ul style="list-style:none; color:#aaa; padding:0;">
-          <li>• Awareness Campaign Frameworks</li>
-          <li>• Lead-Gen Form Ads</li>
-          <li>• Industry Targeting via Job Titles</li>
         </ul>
       </div>
 
-      <!-- Generative AI -->
       <div class="project">
-        <img src="https://cdn-icons-png.flaticon.com/512/4712/4712109.png" alt="AI Icon">
         <h3>Generative AI Projects</h3>
         <p>AI-driven creative workflows integrating ChatGPT, Google AI Studio & Canva automation.</p>
-        <ul style="list-style:none; color:#aaa; padding:0;">
-          <li>• AI-Powered Ad Copy & SEO Content</li>
-          <li>• Canva + AI Visual Storytelling</li>
-          <li>• Workflow Automation for Marketers</li>
-        </ul>
+        <ul>
       </div>
 
     </div>
