@@ -12,45 +12,59 @@
       color: #fff;
     }
 
-    /* HEADER (Hero Section) */
-    header {
-      background-color: #0A0A0A;
-      text-align: left;
-      padding: 100px 10%;
-    }
+<!-- HERO SECTION -->
+<section class="hero">
+  <div class="hero-content">
+    <h1 class="brand">ChawreX</h1>
+    <h2 class="tagline">Owais Chawre | Full-Stack SEO & Performance Marketing</h2>
+    <p class="subtext">Explore case studies, client work & marketing experiments</p>
+  </div>
+</section>
 
-    header h1 {
-      color: #D4AF37;
-      font-size: 60px;
-      margin: 0;
-    }
+/* HERO SECTION */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100vh;
+  background: radial-gradient(circle at center, #0A0A0A 60%, #000 100%);
+  color: #fff;
+  padding: 0 10%;
+  flex-direction: column;
+  position: relative;
+}
 
-    header h3 {
-      color: #ccc;
-      margin: 15px 0 10px;
-      font-size: 22px;
-    }
+.hero-content {
+  max-width: 800px;
+  animation: fadeInUp 1.5s ease;
+}
 
-    header p {
-      color: #aaa;
-      font-size: 16px;
-      margin: 0 0 20px;
-    }
+.brand {
+  font-size: 64px;
+  font-weight: 700;
+  color: #D4AF37;
+  letter-spacing: 3px;
+  margin-bottom: 10px;
+}
 
-    .cta-btn {
-      display: inline-block;
-      padding: 10px 25px;
-      border: 1px solid #D4AF37;
-      color: #D4AF37;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 500;
-      transition: 0.3s;
-    }
+.tagline {
+  font-size: 22px;
+  color: #eee;
+  margin-bottom: 15px;
+}
 
-    .cta-btn:hover {
-      background-color: #D4AF37;
-      color: #000;
+.subtext {
+  font-size: 16px;
+  color: #aaa;
+  letter-spacing: 0.5px;
+}
+
+/* Animation */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
     }
 
     /* PROJECT SECTION */
