@@ -1,62 +1,18 @@
-font-family: 'Poppins', sans-serif;
-background-color: #000;
-color: #fff;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChawreX | SEO & Performance Marketing</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #000;
+      color: #fff;
       padding-top: 80px; /* Adjust for fixed navbar */
-}
+    }
 
-<!-- HERO SECTION -->
-<section class="hero">
-  <div class="hero-content">
-    <h1 class="brand">ChawreX</h1>
-    <h2 class="tagline">Owais Chawre | Full-Stack SEO & Performance Marketing</h2>
-    <p class="subtext">Explore case studies, client work & marketing experiments</p>
-  </div>
-</section>
-
-/* HERO SECTION */
-.hero {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  height: 100vh;
-  background: radial-gradient(circle at center, #0A0A0A 60%, #000 100%);
-  color: #fff;
-  padding: 0 10%;
-  flex-direction: column;
-  position: relative;
-}
-
-.hero-content {
-  max-width: 800px;
-  animation: fadeInUp 1.5s ease;
-}
-
-.brand {
-  font-size: 64px;
-  font-weight: 700;
-  color: #D4AF37;
-  letter-spacing: 3px;
-  margin-bottom: 10px;
-}
-
-.tagline {
-  font-size: 22px;
-  color: #eee;
-  margin-bottom: 15px;
-}
-
-.subtext {
-  font-size: 16px;
-  color: #aaa;
-  letter-spacing: 0.5px;
-}
-
-/* Animation */
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
     html {
       scroll-behavior: smooth;
     }
@@ -304,10 +260,80 @@ color: #fff;
     .contact-buttons .btn:hover {
       background: #D4AF37;
       color: #000;
-}
+    }
 
-/* PROJECT SECTION */
-@@ -142,16 +337,90 @@ <h2 class="tagline">Owais Chawre | Full-Stack SEO & Performance Marketing</h2>
+    /* PROJECT SECTION */
+    .projects {
+      padding: 80px 10%;
+      background-color: #0A0A0A;
+      text-align: center;
+    }
+
+    .projects h2 {
+      color: #D4AF37;
+      font-size: 36px;
+      margin-bottom: 50px;
+      border-bottom: 1px solid #D4AF37;
+      display: inline-block;
+      padding-bottom: 10px;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+    }
+
+    .project {
+      background-color: #111;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(212,175,55,0.1);
+      transition: 0.3s;
+    }
+
+    .project:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 15px rgba(212,175,55,0.25);
+    }
+
+    .project h3 {
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .project p {
+      color: #aaa;
+      font-size: 15px;
+      margin-bottom: 15px;
+    }
+
+    .project ul {
+      list-style: none;
+      color: #aaa;
+      padding: 0;
+      margin: 0;
+    }
+
+    .project a {
+      color: #D4AF37;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .project a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      background-color: #0A0A0A;
+      color: #888;
+      text-align: center;
+      padding: 25px 0;
+      font-size: 14px;
+      border-top: 1px solid #222;
+    }
+  </style>
 </head>
 
 <body>
@@ -325,13 +351,7 @@ color: #fff;
     </div>
   </nav>
 
-<!-- HERO SECTION -->
-  <header>
-    <h1>ChawreX</h1>
-    <h3>Owais Chawre | Full-Stack SEO & Performance Marketing</h3>
-    <p>Explore case studies, client work & marketing experiments</p>
-    <a href="https://www.notion.so/your-notion-portfolio-link" target="_blank" class="cta-btn">→ View Full Portfolio</a>
-  </header>
+  <!-- HERO SECTION -->
   <section class="hero">
     <div class="hero-content">
       <h1 class="brand">ChawreX</h1>
@@ -399,8 +419,52 @@ color: #fff;
     </div>
   </section>
 
-<!-- PROJECT SECTIONS -->
-  <section class="projects">
+  <!-- PROJECT SECTIONS -->
   <section class="projects" id="projects">
-<h2>Client Work & Marketing Projects</h2>
-<div class="project-grid">
+    <h2>Client Work & Marketing Projects</h2>
+    <div class="project-grid">
+
+      <div class="project">
+        <h3>SEO Projects</h3>
+        <p>Technical, On-Page & Off-Page SEO for high-performance organic growth and visibility.</p>
+        </ul>
+      </div>
+
+      <div class="project">
+        <h3>Google Ads Projects</h3>
+        <p>Conversion-focused campaigns built using AI-powered performance insights and advanced tracking.</p>
+        </ul>
+      </div>
+
+      <div class="project">
+        <h3>Meta Ads Projects</h3>
+        <p>Creative-led campaigns for brand awareness and local engagement across Meta’s ecosystem.</p>
+        <ul>
+      </div>
+
+      <div class="project">
+        <h3>Email Marketing</h3>
+        <p>Strategic email sequences designed to boost engagement, retention, and conversions.</p>
+        <ul>
+      </div>
+
+      <div class="project">
+        <h3>LinkedIn Ads</h3>
+        <p>B2B awareness and lead-gen ad setups for startups and service-based businesses.</p>
+        </ul>
+      </div>
+
+      <div class="project">
+        <h3>Generative AI Projects</h3>
+        <p>AI-driven creative workflows integrating ChatGPT, Google AI Studio & Canva automation.</p>
+        <ul>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 ChawreX | Built by Owais Chawre with 💛 and AI</p>
+  </footer>
+</body>
+</html>
