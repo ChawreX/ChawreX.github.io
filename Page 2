@@ -1,1 +1,145 @@
+import React, { useState } from 'react';
+
+function App() {
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle form submission (e.g., send to email or API)
+    alert('Message sent!'); // Placeholder
+  };
+
+  const scrollToSection = (id) => {
+    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+  };
+
+  return (
+    <div className="font-inter bg-gradient-to-br from-white via-blue-50 to-purple-50 min-h-screen">
+      {/* Header */}
+      <header className="fixed top-0 w-full bg-white/80 backdrop-blur-md shadow-sm z-50">
+        <nav className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+          <h1 className="font-poppins font-bold text-xl text-gray-800">Owais Chawre</h1>
+          <ul className="hidden md:flex space-x-8">
+            <li><button onClick={() => scrollToSection('hero')} className="text-gray-700 hover:text-blue-600 transition">Home</button></li>
+            <li><button onClick={() => scrollToSection('about')} className="text-gray-700 hover:text-blue-600 transition">About</button></li>
+            <li><button onClick={() => scrollToSection('services')} className="text-gray-700 hover:text-blue-600 transition">Services</button></li>
+            <li><button onClick={() => scrollToSection('portfolio')} className="text-gray-700 hover:text-blue-600 transition">Portfolio</button></li>
+            <li><button onClick={() => scrollToSection('contact')} className="text-gray-700 hover:text-blue-600 transition">Contact</button></li>
+          </ul>
+          <button className="md:hidden text-gray-700">Menu</button> {/* Add mobile menu logic if needed */}
+        </nav>
+      </header>
+
+      {/* Hero Section */}
+      <section id="hero" className="pt-24 pb-16 px-6 max-w-6xl mx-auto flex flex-col md:flex-row items-center">
+        <div className="md:w-1/2 mb-8 md:mb-0">
+          <h1 className="font-poppins font-bold text-4xl md:text-5xl text-gray-800 mb-4">Owais Chawre | Performance Marketing Specialist</h1>
+          <p className="text-lg text-gray-600 mb-2">Helping businesses grow online through AI-powered SEO, Ads, and full digital setup.</p>
+          <p className="text-sm text-gray-500 mb-6">From strategy to setup — I help take your business online, the smart way.</p>
+          <div className="space-x-4">
+            <button onClick={() => scrollToSection('contact')} className="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition">Work With Me</button>
+            <button onClick={() => scrollToSection('portfolio')} className="border border-blue-500 text-blue-500 px-6 py-3 rounded-lg hover:bg-blue-50 transition">View My Work</button>
+          </div>
+        </div>
+        <div className="md:w-1/2 flex justify-center">
+          {/* Placeholder Avatar Illustration */}
+          <svg width="300" height="300" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="150" cy="150" r="150" fill="url(#gradient)" />
+            <circle cx="150" cy="120" r="40" fill="#fff" />
+            <path d="M100 200 Q150 250 200 200" stroke="#fff" strokeWidth="4" fill="none" />
+            <defs>
+              <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style={{stopColor:'#667eea',stopOpacity:1}} />
+                <stop offset="100%" style={{stopColor:'#764ba2',stopOpacity:1}} />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="py-16 px-6 max-w-6xl mx-auto">
+        <h2 className="font-poppins font-semibold text-3xl text-gray-800 mb-4">About Me</h2>
+        <div className="w-16 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mb-6 rounded"></div>
+        <p className="text-gray-600 leading-relaxed max-w-2xl">
+          I’m Owais — a performance marketing specialist who helps businesses go digital with smart, AI-powered marketing. From SEO to paid ads and creatives, I bring strategies that help brands grow faster online. My goal is simple — to help you reach more people, generate more leads, and scale your business with ease.
+        </p>
+      </section>
+
+      {/* Services Section */}
+      <section id="services" className="py-16 px-6 max-w-6xl mx-auto">
+        <h2 className="font-poppins font-semibold text-3xl text-gray-800 mb-8">What I Do</h2>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {[
+            { title: 'SEO Optimization', desc: 'Rank higher on Google with AI-driven on-page, off-page, and technical improvements.' },
+            { title: 'Google Ads', desc: 'Create and optimize ad campaigns that drive real results with smart targeting.' },
+            { title: 'Meta Ads (Facebook & Instagram)', desc: 'Reach your perfect audience with high-performing creative campaigns.' },
+            { title: 'Email Marketing', desc: 'Build stronger connections and increase sales through automated AI-powered email campaigns.' },
+            { title: 'AI Creatives', desc: 'Design engaging visuals using AI and Canva for better ad performance.' },
+          ].map((service, index) => (
+            <div key={index} className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition transform hover:-translate-y-1">
+              <h3 className="font-poppins font-semibold text-xl text-gray-800 mb-2">{service.title}</h3>
+              <p className="text-gray-600">{service.desc}</p>
+            </div>
+          ))}
+        </div>
+        <div className="text-center mt-8">
+          <button onClick={() => scrollToSection('contact')} className="bg-purple-500 text-white px-6 py-3 rounded-lg hover:bg-purple-600 transition">Get a Free Marketing Plan</button>
+        </div>
+      </section>
+
+      {/* Portfolio Section */}
+      <section id="portfolio" className="py-16 px-6 max-w-6xl mx-auto">
+        <h2 className="font-poppins font-semibold text-3xl text-gray-800 mb-8">My Work</h2>
+        <div className="grid md:grid-cols-3 gap-8">
+          {[
+            { title: 'SEO Case Study', desc: 'Increased organic traffic by 150% for a local business.', link: 'https://notion.so/example1' },
+            { title: 'Meta Ads Project', desc: 'Boosted conversions with targeted Facebook campaigns.', link: 'https://notion.so/example2' },
+            { title: 'Google Ads Campaign', desc: 'Achieved 300% ROI for an e-commerce client.', link: 'https://notion.so/example3' },
+          ].map((project, index) => (
+            <div key={index} className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
+              <div className="w-full h-32 bg-gradient-to-r from-blue-200 to-purple-200 rounded mb-4"></div> {/* Placeholder thumbnail */}
+              <h3 className="font-poppins font-semibold text-xl text-gray-800 mb-2">{project.title}</h3>
+              <p className="text-gray-600 mb-4">{project.desc}</p>
+              <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">View Case Study</a>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="py-16 px-6 max-w-6xl mx-auto">
+        <h2 className="font-poppins font-semibold text-3xl text-gray-800 mb-4">Let’s Grow Your Business</h2>
+        <p className="text-gray-600 mb-8">Tell me about your project or goals — I’ll get back to you soon.</p>
+        <form onSubmit={handleSubmit} className="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
+          <input type="text" name="name" placeholder="Name" value={formData.name} onChange={handleChange} className="w-full p-3 mb-4 border rounded" required />
+          <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} className="w-full p-3 mb-4 border rounded" required />
+          <textarea name="message" placeholder="Message" value={formData.message} onChange={handleChange} className="w-full p-3 mb-4 border rounded" rows="4" required></textarea>
+          <button type="submit" className="w-full bg-blue-500 text-white py-3 rounded hover:bg-blue-600 transition">Send Message</button>
+        </form>
+        <div className="mt-8 text-center">
+          <p className="text-gray-600">Email: owaischawre0@gmail.com</p>
+          <p className="text-gray-600">Phone: +91 8108201314</p>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-8 px-6 bg-gray-100 border-t">
+        <div className="max-w-6xl mx-auto flex justify-between items-center">
+          <p className="text-gray-600">&copy; 2023 Owais Chawre. All rights reserved.</p>
+          <div className="flex space-x-4">
+            <a href="https://linkedin.com/in/owaischawre" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600">LinkedIn</a>
+            <a href="https://instagram.com/owaischawre" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600">Instagram</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
+
+export default App;
 
