@@ -1,169 +1,482 @@
-import React, { useState, useEffect } from 'react';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ChawreX | SEO & Performance Marketing</title>
 
-function App() {
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  <!-- Poppins font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  <meta name="theme-color" content="#000000" />
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert('Message sent!');
-  };
-
-  const scrollToSection = (id) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-    setIsMenuOpen(false);
-  };
-
-  useEffect(() => {
-    // Typewriter effect for tagline
-    const tagline = document.querySelector('.tagline');
-    if (tagline) {
-      tagline.style.width = '0';
-      setTimeout(() => {
-        tagline.style.width = '100%';
-      }, 500);
+  <style>
+    :root{
+      --gold: #D4AF37;
+      --bg: #000;
+      --panel: #0A0A0A;
+      --muted: #aaa;
+      --card: #111;
+      --gap: 10%;
+      --nav-height: 72px;
     }
-  }, []);
 
-  return (
-    <div className="font-poppins bg-black text-white min-h-screen pt-20">
-      {/* Navbar */}
-      <nav className="fixed top-0 w-full bg-black/90 border-b border-gray-800 backdrop-blur-md z-50">
-        <div className="flex justify-between items-center px-10 py-4.5">
-          <h1 className="text-yellow-500 text-2xl font-bold tracking-wider">ChawreX</h1>
-          <ul className="hidden md:flex space-x-8 list-none">
-            <li><a href="#about" onClick={(e) => { e.preventDefault(); scrollToSection('about'); }} className="text-gray-300 hover:text-yellow-500 transition">About</a></li>
-            <li><a href="#skills" onClick={(e) => { e.preventDefault(); scrollToSection('skills'); }} className="text-gray-300 hover:text-yellow-500 transition">Skills</a></li>
-            <li><a href="#certifications" onClick={(e) => { e.preventDefault(); scrollToSection('certifications'); }} className="text-gray-300 hover:text-yellow-500 transition">Certifications</a></li>
-            <li><a href="#projects" onClick={(e) => { e.preventDefault(); scrollToSection('projects'); }} className="text-gray-300 hover:text-yellow-500 transition">Projects</a></li>
-            <li><a href="#contact" onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }} className="text-gray-300 hover:text-yellow-500 transition">Contact</a></li>
-          </ul>
-          <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="md:hidden text-gray-300 focus:outline-none">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
-            </svg>
-          </button>
-        </div>
-        {isMenuOpen && (
-          <div className="md:hidden bg-black shadow-md">
-            <ul className="px-10 py-4 space-y-4">
-              <li><a href="#about" onClick={(e) => { e.preventDefault(); scrollToSection('about'); }} className="block text-gray-300 hover:text-yellow-500">About</a></li>
-              <li><a href="#skills" onClick={(e) => { e.preventDefault(); scrollToSection('skills'); }} className="block text-gray-300 hover:text-yellow-500">Skills</a></li>
-              <li><a href="#certifications" onClick={(e) => { e.preventDefault(); scrollToSection('certifications'); }} className="block text-gray-300 hover:text-yellow-500">Certifications</a></li>
-              <li><a href="#projects" onClick={(e) => { e.preventDefault(); scrollToSection('projects'); }} className="block text-gray-300 hover:text-yellow-500">Projects</a></li>
-              <li><a href="#contact" onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }} className="block text-gray-300 hover:text-yellow-500">Contact</a></li>
-            </ul>
-          </div>
-        )}
-      </nav>
+    html { scroll-behavior: smooth; }
 
-      {/* Hero Section */}
-      <section className="flex items-center justify-center text-center h-screen bg-radial-gradient from-gray-900 to-black px-10 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/10 via-transparent to-yellow-500/10 animate-pulse"></div>
-        <div className="max-w-2xl relative z-10 animate-fadeInUp">
-          <h1 className="text-6xl font-bold text-yellow-500 tracking-widest mb-2 animate-glow">ChawreX</h1>
-          <h2 className="tagline text-xl text-gray-200 mb-4 border-r-2 border-yellow-500 whitespace-nowrap overflow-hidden animate-typing">Owais Chawre | Full-Stack SEO & Performance Marketing</h2>
-          <p className="text-lg text-gray-400 mb-8 animate-fadeInUp delay-1s">Building organic growth engines with data, design & creativity.</p>
-          <a href="#projects" onClick={(e) => { e.preventDefault(); scrollToSection('projects'); }} className="bg-yellow-500 text-black px-8 py-4 rounded-lg font-semibold shadow-lg animate-pulse inline-block">↓ Explore My Work</a>
-        </div>
-      </section>
+    /* ===== GLOBAL ===== */
+    *{ box-sizing: border-box; }
+    body{
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--bg);
+      color: #fff;
+      padding-top: var(--nav-height); /* room for fixed navbar */
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
 
-      {/* About Section */}
-      <section id="about" className="py-24 px-10 bg-gray-900 flex justify-center items-center flex-col text-center">
-        <div className="max-w-2xl">
-          <h2 className="text-yellow-500 text-3xl mb-4 border-b border-yellow-500 inline-block pb-1.5">About Me</h2>
-          <p className="text-gray-300 text-base leading-relaxed mb-2">
-            I’m <span className="text-yellow-500 font-semibold">Owais Chawre</span>, a results-driven 
-            <strong>Full-Stack SEO & Performance Marketing Specialist</strong> blending 
-            creativity, analytics, and AI tools to craft strategies that rank, convert, 
-            and scale brands online.  
-          </p>
-          <p className="text-gray-300 text-base leading-relaxed">
-            From optimizing technical foundations to designing high-converting ad campaigns, 
-            my focus is on delivering measurable results through data-backed marketing innovation.
-          </p>
-        </div>
-      </section>
+    /* ensure anchor targets are visible below fixed header */
+    section { scroll-margin-top: calc(var(--nav-height) + 16px); }
 
-      {/* Skills Section */}
-      <section id="skills" className="py-20 px-10 bg-gray-900 text-center">
-        <h2 className="text-yellow-500 text-4xl mb-10 border-b border-yellow-500 inline-block pb-2.5">Skills & Tools</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {[
-            'SEO (On-Page, Technical, Off-Page)',
-            'Google Ads & Analytics',
-            'Meta Ads Management',
-            'Keyword Research & Audits',
-            'Schema Markup & Tag Manager',
-            'AI Content Strategy & Automation'
-          ].map((skill, index) => (
-            <div key={index} className="bg-gray-800 border border-gray-700 p-5 rounded-lg text-gray-300 hover:border-yellow-500 hover:text-white transition transform hover:-translate-y-1">
-              {skill}
-            </div>
-          ))}
-        </div>
-      </section>
+    /* ===== NAVBAR ===== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--nav-height);
+      display: flex;
+      align-items: center;
+      background: rgba(10,10,10,0.92);
+      border-bottom: 1px solid #111;
+      backdrop-filter: blur(6px);
+      z-index: 1000;
+      padding: 0 4%;
+    }
 
-      {/* Certifications Section */}
-      <section id="certifications" className="py-20 px-10 bg-gray-900 text-center">
-        <h2 className="text-yellow-500 text-4xl mb-10 border-b border-yellow-500 inline-block pb-2.5">Certifications</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {[
-            'Google Skillshop – AI-Powered Ads',
-            'SEMrush – Technical SEO',
-            'SEMrush – Keyword Research',
-            'Meta Ads Blueprint',
-            'Google Ads Measurement & Creative'
-          ].map((cert, index) => (
-            <div key={index} className="bg-gray-800 border border-gray-700 p-5 rounded-lg text-gray-300 hover:border-yellow-500 hover:text-white transition transform hover:-translate-y-1">
-              {cert}
-            </div>
-          ))}
-        </div>
-      </section>
+    .nav-container{
+      width:100%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap: 16px;
+    }
 
-      {/* Projects Section */}
-      <section id="projects" className="py-20 px-10 bg-gray-900 text-center">
-        <h2 className="text-yellow-500 text-4xl mb-12 border-b border-yellow-500 inline-block pb-2.5">Client Work & Marketing Projects</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {[
-            { logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/SEMrush_logo.svg/512px-SEMrush_logo.svg.png', title: 'SEO Projects', desc: 'Technical, On-Page & Off-Page SEO for high-performance organic growth and visibility.' },
-            { logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png', title: 'Google Ads Projects', desc: 'Conversion-focused campaigns built using AI-powered performance insights and advanced tracking.' },
-            { logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Facebook_f_logo_%282019%29.svg/512px-Facebook_f_logo_%282019%29.svg.png', title: 'Meta Ads Projects', desc: 'Creative-led campaigns for brand awareness and local engagement across Meta’s ecosystem.' },
-            { logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Gmail_icon_%282020%29.svg/512px-Gmail_icon_%282020%29.svg.png', title: 'Email Marketing', desc: 'Strategic email sequences designed to boost engagement, retention, and conversions.' },
-            { logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/512px-LinkedIn_logo_initials.png', title: 'LinkedIn Ads', desc: 'B2B awareness and lead-gen ad setups for startups and service-based businesses.' },
-            { logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/ChatGPT_logo.svg/512px-ChatGPT_logo.svg.png', title: 'Generative AI Projects', desc: 'AI-driven creative workflows integrating ChatGPT, Google AI Studio & Canva automation.' }
-          ].map((project, index) => (
-            <div key={index} className="bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-1">
-              <img src={project.logo} alt={`${project.title} Logo`} className="w-12 h-12 mb-3 mx-auto" />
-              <h3 className="text-white mb-2">{project.title}</h3>
-              <p className="text-gray-400 text-sm">{project.desc}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+    .nav-logo{
+      color: var(--gold);
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin: 0;
+    }
 
-      {/* Contact Section */}
-      <section id="contact" className="py-24 px-10 bg-gray-900 text-center">
-        <h2 className="text-yellow-500 text-4xl mb-5">Let’s Collaborate</h2>
-        <p className="text-gray-300 text-base mb-10">Have a project or role in mind? Reach out directly — I’d love to connect.</p>
-        <div className="space-x-4">
-          <a href="mailto:owaischawre@gmail.com" className="bg-gray-800 border border-yellow-500 text-yellow-500 px-6 py-3 rounded-lg hover:bg-yellow-500 hover:text-black transition inline-block">📧 Email Me</a>
-          <a href="https://www.linkedin.com/in/owaischawre/" target="_blank" rel="noopener noreferrer" className="bg-gray-800 border border-yellow-500 text-yellow-500 px-6 py-3 rounded-lg hover:bg-yellow-500 hover:text-black transition inline-block">💼 LinkedIn</a>
-          <a href="https://www.notion.so/your-notion-portfolio-link" target="_blank" rel="noopener noreferrer" className="bg-gray-800 border border-yellow-500 text-yellow-500 px-6 py-3 rounded-lg hover:bg-yellow-500 hover:text-black transition inline-block">🧠 View Notion Portfolio</a>
-        </div>
-      </section>
+    .nav-links{
+      list-style:none;
+      display:flex;
+      gap: 22px;
+      margin:0;
+      padding:0;
+      align-items:center;
+    }
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-gray-500 text-center py-6 border-t border-gray-700">
-        <p>&copy; 2025 ChawreX | Built by Owais Chawre with 💛 and AI</p>
-      </footer>
+    .nav-links a{
+      color: #ccc;
+      text-decoration:none;
+      font-weight:500;
+      font-size:14px;
+      transition: color .18s ease, transform .12s ease;
+      padding:8px 6px;
+      border-radius:6px;
+    }
+    .nav-links a:hover,
+    .nav-links a.active{
+      color: var(--gold);
+      transform: translateY(-1px);
+      background: rgba(212,175,55,0.02);
+    }
+
+    /* mobile nav fallback - simple */
+    @media (max-width:800px){
+      .nav-links { gap: 12px; font-size:13px; }
+      .nav-container{ padding: 0 12px; }
+    }
+
+    /* HERO */
+    .hero{
+      min-height: calc(100vh - var(--nav-height));
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding: 56px var(--gap) 120px;
+      position:relative;
+      overflow:hidden;
+      background: radial-gradient(circle at center, #0A0A0A 60%, #000 100%);
+    }
+
+    .hero::before{
+      content:'';
+      position:absolute;
+      inset:0;
+      background: linear-gradient(45deg, rgba(212,175,55,0.06) 0%, rgba(212,175,55,0.02) 50%, rgba(212,175,55,0.06) 100%);
+      z-index:0;
+      animation: wave 7s ease-in-out infinite;
+      pointer-events:none;
+    }
+
+    @keyframes wave {
+      0%,100%{ transform: translateY(0) scale(1); }
+      50%{ transform: translateY(-8px) scale(1.01); }
+    }
+
+    .hero-content{ position:relative; z-index:2; max-width:880px; width:100%; }
+
+    .brand{
+      font-size: clamp(36px, 6vw, 64px);
+      color: var(--gold);
+      font-weight:800;
+      letter-spacing:2px;
+      margin: 0 0 8px 0;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 6px var(--gold); }
+      to { text-shadow: 0 0 18px var(--gold); }
+    }
+
+    /* Typewriter — uses a CSS variable set by JS for character count */
+    .tagline{
+      display: inline-block;
+      font-size: clamp(14px,2.2vw,22px);
+      color: #eee;
+      margin: 0 auto 12px;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid var(--gold);
+      /* initial width zero then animate to --typing-ch */
+      width: 0ch;
+      animation:
+        typing 2.6s steps(60, end) forwards,
+        blink-caret .75s step-end infinite;
+      letter-spacing: 0.2px;
+    }
+
+    @keyframes typing {
+      from { width: 0ch; }
+      to { width: var(--typing-ch, 40ch); } /* default fallback */
+    }
+    @keyframes blink-caret {
+      from, to { border-color: transparent; }
+      50% { border-color: var(--gold); }
+    }
+
+    .subtitle{
+      color: var(--muted);
+      margin-top:12px;
+      font-size: clamp(14px, 1.6vw, 18px);
+      opacity:.95;
+    }
+
+    .cta-btn{
+      display:inline-block;
+      margin-top:20px;
+      background: var(--gold);
+      color: #000;
+      padding: 12px 22px;
+      border-radius: 10px;
+      text-decoration:none;
+      font-weight:600;
+      box-shadow: 0 0 24px rgba(212,175,55,0.35);
+      transition: transform .15s ease;
+    }
+    .cta-btn:hover{ transform: translateY(-3px); }
+
+    /* ABOUT */
+    .about{
+      padding: 80px var(--gap);
+      background: var(--panel);
+      text-align:center;
+    }
+
+    .about h2{ color: var(--gold); font-size: 28px; display:inline-block; border-bottom:1px solid var(--gold); padding-bottom:6px; margin-bottom:14px; }
+    .about p{ color:#ccc; max-width:900px; margin:0 auto 8px; line-height:1.7; }
+
+    .highlight{ color:var(--gold); font-weight:600; }
+
+    /* SKILLS */
+    .skills{ padding: 64px var(--gap); background: var(--panel); text-align:center; }
+    .skills h2{ color:var(--gold); font-size:28px; display:inline-block; border-bottom:1px solid var(--gold); padding-bottom:8px; margin-bottom:26px; }
+    .skills-grid{
+      display:grid;
+      gap:20px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      margin-top:28px;
+    }
+
+    .skill-card{
+      background: var(--card);
+      border:1px solid #222;
+      padding:18px;
+      border-radius:10px;
+      color:#ccc;
+      transition: transform .18s ease, border-color .18s ease;
+      text-align:center;
+      min-height:70px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:600;
+    }
+    .skill-card:hover{ transform: translateY(-6px); border-color: var(--gold); color:#fff; }
+
+    /* CERTS */
+    .certifications{ padding:64px var(--gap); background:var(--panel); text-align:center; }
+    .cert-grid{ display:grid; gap:20px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); margin-top:28px; }
+    .cert-card{ background:var(--card); color:#ccc; padding:18px; border-radius:10px; border:1px solid #222; font-weight:600; }
+
+    /* PROJECTS */
+    .projects{ padding:64px var(--gap); background:var(--panel); text-align:center; }
+    .project-grid{ display:grid; gap:30px; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); margin-top:30px; }
+    .project{
+      background: var(--card);
+      padding:20px;
+      border-radius:12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+      border:1px solid #222;
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .project:hover{ transform: translateY(-6px); box-shadow: 0 10px 28px rgba(0,0,0,0.6); border-color: var(--gold); }
+    .project h3{ color:#fff; margin:10px 0; }
+    .project p{ color:#aaa; margin:0 0 12px; }
+    .project-logo{ width:48px; height:48px; object-fit:contain; display:block; margin-bottom:10px; }
+
+    /* CONTACT */
+    .contact{ padding:80px var(--gap); background:var(--panel); text-align:center; }
+    .contact h2{ color:var(--gold); font-size:26px; margin-bottom:8px; }
+    .contact p{ color:#ccc; max-width:800px; margin: 0 auto 20px; }
+    .contact-buttons{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+    .btn{
+      display:inline-block;
+      background: transparent;
+      border:1px solid var(--gold);
+      color:var(--gold);
+      padding:10px 18px;
+      border-radius:8px;
+      text-decoration:none;
+      font-weight:600;
+      transition: all .15s ease;
+    }
+    .btn:hover{ background:var(--gold); color:#000; transform: translateY(-3px); }
+
+    footer{
+      background:var(--panel);
+      color:#888;
+      text-align:center;
+      padding:20px 0;
+      border-top:1px solid #222;
+      font-size:13px;
+    }
+
+    /* small screens */
+    @media (max-width:520px){
+      .hero{ padding: 36px 6% 90px; }
+      .nav-logo{ font-size:18px; }
+      .brand{ font-size:32px; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <h1 class="nav-logo" aria-hidden="true">ChawreX</h1>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
     </div>
-  );
-}
+  </nav>
 
-export default App;
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="hero-heading">
+    <div class="hero-content">
+      <h1 id="hero-heading" class="brand">ChawreX</h1>
+
+      <!-- Tagline text will be used to set the animation width dynamically via JS -->
+      <h2 class="tagline" id="tagline">Owais Chawre | Full-Stack SEO & Performance Marketing</h2>
+
+      <p class="subtitle">Building organic growth engines with data, design & creativity.</p>
+
+      <div style="margin-top:18px">
+        <a href="#projects" class="cta-btn" title="Explore my projects">↓ Explore My Work</a>
+        &nbsp;&nbsp;
+        <a href="#contact" class="cta-btn" style="background:transparent;color:var(--gold);border:1px solid var(--gold);box-shadow:none">Let's Collaborate</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <h2>About Me</h2>
+    <p>
+      I’m <span class="highlight">Owais Chawre</span>, a results-driven 
+      <strong>Full-Stack SEO & Performance Marketing Specialist</strong> blending 
+      creativity, analytics, and AI tools to craft strategies that rank, convert, 
+      and scale brands online.
+    </p>
+    <p>
+      From optimizing technical foundations to designing high-converting ad campaigns, 
+      my focus is on delivering measurable results through data-backed marketing innovation.
+    </p>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="skills" id="skills" aria-labelledby="skills-heading">
+    <h2 id="skills-heading">Skills & Tools</h2>
+    <div class="skills-grid">
+      <div class="skill-card">SEO (On-Page, Technical, Off-Page)</div>
+      <div class="skill-card">Google Ads & Analytics</div>
+      <div class="skill-card">Meta Ads Management</div>
+      <div class="skill-card">Keyword Research & Audits</div>
+      <div class="skill-card">Schema Markup & Tag Manager</div>
+      <div class="skill-card">AI Content Strategy & Automation</div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section class="certifications" id="certifications" aria-labelledby="certs-heading">
+    <h2 id="certs-heading">Certifications</h2>
+    <div class="cert-grid">
+      <div class="cert-card">Google Skillshop – AI-Powered Ads</div>
+      <div class="cert-card">SEMrush – Technical SEO</div>
+      <div class="cert-card">SEMrush – Keyword Research</div>
+      <div class="cert-card">Meta Ads Blueprint</div>
+      <div class="cert-card">Google Ads Measurement & Creative</div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="projects" id="projects" aria-labelledby="projects-heading">
+    <h2 id="projects-heading">Client Work & Marketing Projects</h2>
+    <div class="project-grid">
+
+      <div class="project" aria-label="SEO Projects">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/SEMrush_logo.svg/512px-SEMrush_logo.svg.png" alt="SEMrush Logo" class="project-logo">
+        <h3>SEO Projects</h3>
+        <p>Technical, On-Page & Off-Page SEO for high-performance organic growth and visibility.</p>
+        <a href="#projects" aria-label="View SEO projects">View case studies →</a>
+      </div>
+
+      <div class="project">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" alt="Google Logo" class="project-logo">
+        <h3>Google Ads Projects</h3>
+        <p>Conversion-focused campaigns built using AI-powered performance insights and advanced tracking.</p>
+      </div>
+
+      <div class="project">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Facebook_f_logo_%282019%29.svg/512px-Facebook_f_logo_%282019%29.svg.png" alt="Meta Logo" class="project-logo">
+        <h3>Meta Ads Projects</h3>
+        <p>Creative-led campaigns for brand awareness and local engagement across Meta’s ecosystem.</p>
+      </div>
+
+      <div class="project">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Gmail_icon_%282020%29.svg/512px-Gmail_icon_%282020%29.svg.png" alt="Email Logo" class="project-logo">
+        <h3>Email Marketing</h3>
+        <p>Strategic email sequences designed to boost engagement, retention, and conversions.</p>
+      </div>
+
+      <div class="project">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/512px-LinkedIn_logo_initials.png" alt="LinkedIn Logo" class="project-logo">
+        <h3>LinkedIn Ads</h3>
+        <p>B2B awareness and lead-gen ad setups for startups and service-based businesses.</p>
+      </div>
+
+      <div class="project">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/ChatGPT_logo.svg/512px-ChatGPT_logo.svg.png" alt="AI Logo" class="project-logo">
+        <h3>Generative AI Projects</h3>
+        <p>AI-driven creative workflows integrating ChatGPT, Google AI Studio & Canva automation.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact" aria-labelledby="contact-heading">
+    <h2 id="contact-heading">Let’s Collaborate</h2>
+    <p>Have a project or role in mind? Reach out directly — I’d love to connect.</p>
+
+    <div class="contact-buttons">
+      <a class="btn" href="mailto:owaischawre@gmail.com" aria-label="Email Owais">📧 Email Me</a>
+      <a class="btn" href="https://www.linkedin.com/in/owaischawre/" target="_blank" rel="noopener" aria-label="Owais on LinkedIn">💼 LinkedIn</a>
+      <a class="btn" href="https://www.notion.so/your-notion-portfolio-link" target="_blank" rel="noopener" aria-label="Notion portfolio">🧠 View Notion Portfolio</a>
+      <!-- example of resume download; replace path with your resume file path -->
+      <a class="btn" href="/resume/Owais_Chawre_Resume.pdf" download aria-label="Download resume">📄 Download Resume</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 ChawreX | Built by Owais Chawre with 💛 and AI</p>
+  </footer>
+
+  <!-- Minimal JS for typewriter width + active nav highlighting -->
+  <script>
+    (function(){
+      // Dynamic typewriter width: set --typing-ch to number of characters in tagline
+      const tagline = document.getElementById('tagline');
+      if(tagline){
+        // count visible characters (trim to avoid trailing spaces)
+        const text = tagline.textContent.trim();
+        // add a couple of extra chars for breathing room
+        const chCount = Math.max(18, text.length + 2);
+        tagline.style.setProperty('--typing-ch', chCount + 'ch');
+      }
+
+      // Active nav link on scroll
+      const navLinks = Array.from(document.querySelectorAll('.nav-links a'));
+      const sections = navLinks.map(a => {
+        const id = a.getAttribute('href');
+        try {
+          return document.querySelector(id);
+        } catch(e){ return null; }
+      });
+
+      function updateActive(){
+        const scrollPos = window.scrollY + (window.innerHeight * 0.18) + 40; // slightly ahead for better UX
+        let activeIndex = 0;
+        sections.forEach((sec, i) => {
+          if(!sec) return;
+          const top = sec.offsetTop;
+          if(scrollPos >= top) activeIndex = i;
+        });
+        navLinks.forEach((a, i) => a.classList.toggle('active', i === activeIndex));
+      }
+
+      window.addEventListener('scroll', updateActive, { passive: true });
+      window.addEventListener('resize', updateActive);
+      updateActive();
+
+      // Smooth fallback for older browsers (optional): intercept anchor clicks and scroll with offset
+      navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+          const href = link.getAttribute('href');
+          if(!href || !href.startsWith('#')) return;
+          const target = document.querySelector(href);
+          if(target){
+            e.preventDefault();
+            const navHeight = document.documentElement.style.getPropertyValue('--nav-height') || 72;
+            const offset = (parseInt(navHeight) || 72) + 12;
+            const topPos = target.getBoundingClientRect().top + window.scrollY - offset;
+            window.scrollTo({ top: topPos, behavior: 'smooth' });
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
