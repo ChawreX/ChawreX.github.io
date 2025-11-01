@@ -1,525 +1,144 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ChawreX | SEO & Performance Marketing</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background-color: #000;
-      color: #fff;
-      padding-top: 80px; /* Adjust for fixed navbar */
-    }
+import React, { useState } from 'react';
 
-    html {
-      scroll-behavior: smooth;
-    }
+function App() {
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
 
-    /* ===== NAVBAR ===== */
-    .navbar {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background-color: rgba(10, 10, 10, 0.9);
-      border-bottom: 1px solid #111;
-      backdrop-filter: blur(6px);
-      z-index: 1000;
-    }
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-    .nav-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 18px 10%;
-    }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle form submission (e.g., send to email or API)
+    alert('Message sent!'); // Placeholder
+  };
 
-    .nav-logo {
-      color: #D4AF37;
-      font-size: 22px;
-      letter-spacing: 1px;
-    }
+  const scrollToSection = (id) => {
+    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+  };
 
-    .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 30px;
-      margin: 0;
-      padding: 0;
-    }
+  return (
+    <div className="font-inter bg-gradient-to-br from-white via-blue-50 to-purple-50 min-h-screen">
+      {/* Header */}
+      <header className="fixed top-0 w-full bg-white/80 backdrop-blur-md shadow-sm z-50">
+        <nav className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+          <h1 className="font-poppins font-bold text-xl text-gray-800">Owais Chawre</h1>
+          <ul className="hidden md:flex space-x-8">
+            <li><button onClick={() => scrollToSection('hero')} className="text-gray-700 hover:text-blue-600 transition">Home</button></li>
+            <li><button onClick={() => scrollToSection('about')} className="text-gray-700 hover:text-blue-600 transition">About</button></li>
+            <li><button onClick={() => scrollToSection('services')} className="text-gray-700 hover:text-blue-600 transition">Services</button></li>
+            <li><button onClick={() => scrollToSection('portfolio')} className="text-gray-700 hover:text-blue-600 transition">Portfolio</button></li>
+            <li><button onClick={() => scrollToSection('contact')} className="text-gray-700 hover:text-blue-600 transition">Contact</button></li>
+          </ul>
+          <button className="md:hidden text-gray-700">Menu</button> {/* Add mobile menu logic if needed */}
+        </nav>
+      </header>
 
-    .nav-links a {
-      color: #ccc;
-      text-decoration: none;
-      font-weight: 500;
-      transition: 0.3s;
-    }
+      {/* Hero Section */}
+      <section id="hero" className="pt-24 pb-16 px-6 max-w-6xl mx-auto flex flex-col md:flex-row items-center">
+        <div className="md:w-1/2 mb-8 md:mb-0">
+          <h1 className="font-poppins font-bold text-4xl md:text-5xl text-gray-800 mb-4">Owais Chawre | Performance Marketing Specialist</h1>
+          <p className="text-lg text-gray-600 mb-2">Helping businesses grow online through AI-powered SEO, Ads, and full digital setup.</p>
+          <p className="text-sm text-gray-500 mb-6">From strategy to setup — I help take your business online, the smart way.</p>
+          <div className="space-x-4">
+            <button onClick={() => scrollToSection('contact')} className="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition">Work With Me</button>
+            <button onClick={() => scrollToSection('portfolio')} className="border border-blue-500 text-blue-500 px-6 py-3 rounded-lg hover:bg-blue-50 transition">View My Work</button>
+          </div>
+        </div>
+        <div className="md:w-1/2 flex justify-center">
+          {/* Placeholder Avatar Illustration */}
+          <svg width="300" height="300" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="150" cy="150" r="150" fill="url(#gradient)" />
+            <circle cx="150" cy="120" r="40" fill="#fff" />
+            <path d="M100 200 Q150 250 200 200" stroke="#fff" strokeWidth="4" fill="none" />
+            <defs>
+              <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style={{stopColor:'#667eea',stopOpacity:1}} />
+                <stop offset="100%" style={{stopColor:'#764ba2',stopOpacity:1}} />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+      </section>
 
-    .nav-links a:hover {
-      color: #D4AF37;
-    }
-
-    /* HERO SECTION */
-    .hero {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      height: 100vh;
-      background: radial-gradient(circle at center, #0A0A0A 60%, #000 100%);
-      color: #fff;
-      padding: 0 10%;
-      flex-direction: column;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(45deg, rgba(212,175,55,0.1) 0%, rgba(212,175,55,0.05) 50%, rgba(212,175,55,0.1) 100%);
-      animation: wave 6s ease-in-out infinite;
-      z-index: -1;
-    }
-
-    @keyframes wave {
-      0%, 100% { transform: translateY(0) scale(1); }
-      50% { transform: translateY(-10px) scale(1.02); }
-    }
-
-    .hero-content {
-      max-width: 800px;
-      animation: fadeInUp 1.5s ease;
-    }
-
-    .brand {
-      font-size: 64px;
-      font-weight: 700;
-      color: #D4AF37;
-      letter-spacing: 3px;
-      margin-bottom: 10px;
-      animation: glow 2s ease-in-out infinite alternate;
-    }
-
-    @keyframes glow {
-      from { text-shadow: 0 0 5px #D4AF37, 0 0 10px #D4AF37, 0 0 15px #D4AF37; }
-      to { text-shadow: 0 0 10px #D4AF37, 0 0 20px #D4AF37, 0 0 30px #D4AF37; }
-    }
-
-    .tagline {
-      font-size: 22px;
-      color: #eee;
-      margin-bottom: 15px;
-      border-right: 2px solid #D4AF37; /* Cursor for typewriter */
-      white-space: nowrap;
-      overflow: hidden;
-      width: 0; /* Start with no width for typing effect */
-      animation: typing 3s steps(40, end) forwards, blink-caret 0.75s step-end infinite;
-    }
-
-    .subtitle {
-      font-size: 18px;
-      color: #aaa;
-      margin-bottom: 30px;
-      animation: fadeInUp 2s ease 1s both;
-    }
-
-    .cta-btn {
-      background: #D4AF37;
-      color: #000;
-      padding: 15px 30px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 600;
-      box-shadow: 0 0 20px rgba(212,175,55,0.5);
-      animation: pulse 2s infinite;
-      display: inline-block;
-      margin-top: 20px;
-    }
-
-    @keyframes pulse {
-      0% { box-shadow: 0 0 20px rgba(212,175,55,0.5); }
-      50% { box-shadow: 0 0 30px rgba(212,175,55,0.8); }
-      100% { box-shadow: 0 0 20px rgba(212,175,55,0.5); }
-    }
-
-    /* Typewriter Animation */
-    @keyframes typing {
-      from { width: 0; }
-      to { width: 100%; }
-    }
-
-    @keyframes blink-caret {
-      from, to { border-color: transparent; }
-      50% { border-color: #D4AF37; }
-    }
-
-    /* Animation */
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* ABOUT SECTION */
-    .about {
-      padding: 100px 10%;
-      background-color: #0A0A0A;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      text-align: center;
-    }
-
-    .about-container {
-      max-width: 800px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 30px;
-    }
-
-    .about-text h2 {
-      color: #D4AF37;
-      font-size: 32px;
-      margin-bottom: 15px;
-      border-bottom: 1px solid #D4AF37;
-      display: inline-block;
-      padding-bottom: 6px;
-    }
-
-    .about-text p {
-      color: #ccc;
-      font-size: 16px;
-      line-height: 1.7;
-      margin-bottom: 10px;
-    }
-
-    .highlight {
-      color: #D4AF37;
-      font-weight: 600;
-    }
-
-    /* SKILLS SECTION */
-    .skills {
-      background-color: #0A0A0A;
-      padding: 80px 10%;
-      text-align: center;
-    }
-
-    .skills h2 {
-      color: #D4AF37;
-      font-size: 36px;
-      margin-bottom: 40px;
-      border-bottom: 1px solid #D4AF37;
-      display: inline-block;
-      padding-bottom: 10px;
-    }
-
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-    }
-
-    .skill-card {
-      background: #111;
-      border: 1px solid #222;
-      padding: 20px;
-      border-radius: 10px;
-      color: #ccc;
-      transition: 0.3s;
-    }
-
-    .skill-card:hover {
-      border-color: #D4AF37;
-      color: #fff;
-      transform: translateY(-5px);
-    }
-
-    /* CERTIFICATIONS SECTION */
-    .certifications {
-      background-color: #0A0A0A;
-      padding: 80px 10%;
-      text-align: center;
-    }
-
-    .certifications h2 {
-      color: #D4AF37;
-      font-size: 36px;
-      margin-bottom: 40px;
-      border-bottom: 1px solid #D4AF37;
-      display: inline-block;
-      padding-bottom: 10px;
-    }
-
-    .cert-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-
-    .cert-card {
-      background: #111;
-      color: #ccc;
-      padding: 20px;
-      border-radius: 10px;
-      border: 1px solid #222;
-      transition: 0.3s;
-    }
-
-    .cert-card:hover {
-      border-color: #D4AF37;
-      color: #fff;
-      transform: translateY(-5px);
-    }
-
-    /* CONTACT SECTION */
-    .contact {
-      background-color: #0A0A0A;
-      text-align: center;
-      padding: 100px 10%;
-    }
-
-    .contact h2 {
-      color: #D4AF37;
-      font-size: 36px;
-      margin-bottom: 20px;
-    }
-
-    .contact p {
-      color: #ccc;
-      font-size: 16px;
-      margin-bottom: 40px;
-    }
-
-    .contact-buttons .btn {
-      background: #111;
-      border: 1px solid #D4AF37;
-      color: #D4AF37;
-      padding: 12px 25px;
-      margin: 5px;
-      border-radius: 6px;
-      text-decoration: none;
-      transition: 0.3s;
-    }
-
-    .contact-buttons .btn:hover {
-      background: #D4AF37;
-      color: #000;
-    }
-
-    /* PROJECT SECTION */
-    .projects {
-      padding: 80px 10%;
-      background-color: #0A0A0A;
-      text-align: center;
-    }
-
-    .projects h2 {
-      color: #D4AF37;
-      font-size: 36px;
-      margin-bottom: 50px;
-      border-bottom: 1px solid #D4AF37;
-      display: inline-block;
-      padding-bottom: 10px;
-    }
-
-    .project-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 30px;
-    }
-
-    .project {
-      background-color: #111;
-      padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(212,175,55,0.1);
-      transition: 0.3s;
-    }
-
-    .project:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 0 15px rgba(212,175,55,0.25);
-    }
-
-    .project h3 {
-      color: #fff;
-      margin-bottom: 10px;
-    }
-
-    .project p {
-      color: #aaa;
-      font-size: 15px;
-      margin-bottom: 15px;
-    }
-
-    .project ul {
-      list-style: none;
-      color: #aaa;
-      padding: 0;
-      margin: 0;
-    }
-
-    .project a {
-      color: #D4AF37;
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    .project a:hover {
-      text-decoration: underline;
-    }
-
-    .project-logo {
-      width: 50px;
-      height: 50px;
-      margin-bottom: 10px;
-    }
-
-    footer {
-      background-color: #0A0A0A;
-      color: #888;
-      text-align: center;
-      padding: 25px 0;
-      font-size: 14px;
-      border-top: 1px solid #222;
-    }
-  </style>
-</head>
-
-<body>
-  <!-- NAVBAR -->
-  <nav class="navbar">
-    <div class="nav-container">
-      <h1 class="nav-logo">ChawreX</h1>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#certifications">Certifications</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <!-- HERO SECTION -->
-  <section class="hero">
-    <div class="hero-content">
-      <h1 class="brand">ChawreX</h1>
-      <h2 class="tagline">Owais Chawre | Full-Stack SEO & Performance Marketing</h2>
-      <p class="subtitle">Building organic growth engines with data, design & creativity.</p>
-      <a href="#projects" class="cta-btn">↓ Explore My Work</a>
-    </div>
-  </section>
-
-  <!-- ABOUT ME SECTION -->
-  <section class="about" id="about">
-    <div class="about-container">
-      <div class="about-text">
-        <h2>About Me</h2>
-        <p>
-          I’m <span class="highlight">Owais Chawre</span>, a results-driven 
-          <strong>Full-Stack SEO & Performance Marketing Specialist</strong> blending 
-          creativity, analytics, and AI tools to craft strategies that rank, convert, 
-          and scale brands online.  
+      {/* About Section */}
+      <section id="about" className="py-16 px-6 max-w-6xl mx-auto">
+        <h2 className="font-poppins font-semibold text-3xl text-gray-800 mb-4">About Me</h2>
+        <div className="w-16 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mb-6 rounded"></div>
+        <p className="text-gray-600 leading-relaxed max-w-2xl">
+          I’m Owais — a performance marketing specialist who helps businesses go digital with smart, AI-powered marketing. From SEO to paid ads and creatives, I bring strategies that help brands grow faster online. My goal is simple — to help you reach more people, generate more leads, and scale your business with ease.
         </p>
-        <p>
-          From optimizing technical foundations to designing high-converting ad campaigns, 
-          my focus is on delivering measurable results through data-backed marketing innovation.
-        </p>
-      </div>
+      </section>
+
+      {/* Services Section */}
+      <section id="services" className="py-16 px-6 max-w-6xl mx-auto">
+        <h2 className="font-poppins font-semibold text-3xl text-gray-800 mb-8">What I Do</h2>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {[
+            { title: 'SEO Optimization', desc: 'Rank higher on Google with AI-driven on-page, off-page, and technical improvements.' },
+            { title: 'Google Ads', desc: 'Create and optimize ad campaigns that drive real results with smart targeting.' },
+            { title: 'Meta Ads (Facebook & Instagram)', desc: 'Reach your perfect audience with high-performing creative campaigns.' },
+            { title: 'Email Marketing', desc: 'Build stronger connections and increase sales through automated AI-powered email campaigns.' },
+            { title: 'AI Creatives', desc: 'Design engaging visuals using AI and Canva for better ad performance.' },
+          ].map((service, index) => (
+            <div key={index} className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition transform hover:-translate-y-1">
+              <h3 className="font-poppins font-semibold text-xl text-gray-800 mb-2">{service.title}</h3>
+              <p className="text-gray-600">{service.desc}</p>
+            </div>
+          ))}
+        </div>
+        <div className="text-center mt-8">
+          <button onClick={() => scrollToSection('contact')} className="bg-purple-500 text-white px-6 py-3 rounded-lg hover:bg-purple-600 transition">Get a Free Marketing Plan</button>
+        </div>
+      </section>
+
+      {/* Portfolio Section */}
+      <section id="portfolio" className="py-16 px-6 max-w-6xl mx-auto">
+        <h2 className="font-poppins font-semibold text-3xl text-gray-800 mb-8">My Work</h2>
+        <div className="grid md:grid-cols-3 gap-8">
+          {[
+            { title: 'SEO Case Study', desc: 'Increased organic traffic by 150% for a local business.', link: 'https://notion.so/example1' },
+            { title: 'Meta Ads Project', desc: 'Boosted conversions with targeted Facebook campaigns.', link: 'https://notion.so/example2' },
+            { title: 'Google Ads Campaign', desc: 'Achieved 300% ROI for an e-commerce client.', link: 'https://notion.so/example3' },
+          ].map((project, index) => (
+            <div key={index} className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
+              <div className="w-full h-32 bg-gradient-to-r from-blue-200 to-purple-200 rounded mb-4"></div> {/* Placeholder thumbnail */}
+              <h3 className="font-poppins font-semibold text-xl text-gray-800 mb-2">{project.title}</h3>
+              <p className="text-gray-600 mb-4">{project.desc}</p>
+              <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">View Case Study</a>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="py-16 px-6 max-w-6xl mx-auto">
+        <h2 className="font-poppins font-semibold text-3xl text-gray-800 mb-4">Let’s Grow Your Business</h2>
+        <p className="text-gray-600 mb-8">Tell me about your project or goals — I’ll get back to you soon.</p>
+        <form onSubmit={handleSubmit} className="max-w-md mx-auto bg-white p-6 rounded-lg shadow-md">
+          <input type="text" name="name" placeholder="Name" value={formData.name} onChange={handleChange} className="w-full p-3 mb-4 border rounded" required />
+          <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} className="w-full p-3 mb-4 border rounded" required />
+          <textarea name="message" placeholder="Message" value={formData.message} onChange={handleChange} className="w-full p-3 mb-4 border rounded" rows="4" required></textarea>
+          <button type="submit" className="w-full bg-blue-500 text-white py-3 rounded hover:bg-blue-600 transition">Send Message</button>
+        </form>
+        <div className="mt-8 text-center">
+          <p className="text-gray-600">Email: owaischawre0@gmail.com</p>
+          <p className="text-gray-600">Phone: +91 8108201314</p>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-8 px-6 bg-gray-100 border-t">
+        <div className="max-w-6xl mx-auto flex justify-between items-center">
+          <p className="text-gray-600">&copy; 2023 Owais Chawre. All rights reserved.</p>
+          <div className="flex space-x-4">
+            <a href="https://linkedin.com/in/owaischawre" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600">LinkedIn</a>
+            <a href="https://instagram.com/owaischawre" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-blue-600">Instagram</a>
+          </div>
+        </div>
+      </footer>
     </div>
-  </section>
+  );
+}
 
-  <!-- SKILLS & TOOLS SECTION -->
-  <section class="skills" id="skills">
-    <h2>Skills & Tools</h2>
-    <div class="skills-grid">
-      <div class="skill-card">SEO (On-Page, Technical, Off-Page)</div>
-      <div class="skill-card">Google Ads & Analytics</div>
-      <div class="skill-card">Meta Ads Management</div>
-      <div class="skill-card">Keyword Research & Audits</div>
-      <div class="skill-card">Schema Markup & Tag Manager</div>
-      <div class="skill-card">AI Content Strategy & Automation</div>
-    </div>
-  </section>
-
-  <!-- CERTIFICATIONS SECTION -->
-  <section class="certifications" id="certifications">
-    <h2>Certifications</h2>
-    <div class="cert-grid">
-      <div class="cert-card">Google Skillshop – AI-Powered Ads</div>
-      <div class="cert-card">SEMrush – Technical SEO</div>
-      <div class="cert-card">SEMrush – Keyword Research</div>
-      <div class="cert-card">Meta Ads Blueprint</div>
-      <div class="cert-card">Google Ads Measurement & Creative</div>
-    </div>
-  </section>
-
-  <!-- CONTACT SECTION -->
-  <section class="contact" id="contact">
-    <h2>Let’s Collaborate</h2>
-    <p>Have a project or role in mind? Reach out directly — I’d love to connect.</p>
-    <div class="contact-buttons">
-      <a href="mailto:owaischawre@gmail.com" class="btn">📧 Email Me</a>
-      <a href="https://www.linkedin.com/in/owaischawre/" target="_blank" class="btn">💼 LinkedIn</a>
-      <a href="https://www.notion.so/your-notion-portfolio-link" target="_blank" class="btn">🧠 View Notion Portfolio</a>
-    </div>
-  </section>
-
-  <!-- PROJECT SECTIONS -->
-  <section class="projects" id="projects">
-    <h2>Client Work & Marketing Projects</h2>
-    <div class="project-grid">
-
-      <div class="project">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/SEMrush_logo.svg/512px-SEMrush_logo.svg.png" alt="SEMrush Logo" class="project-logo">
-        <h3>SEO Projects</h3>
-        <p>Technical, On-Page & Off-Page SEO for high-performance organic growth and visibility.</p>
-      </div>
-
-      <div class="project">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" alt="Google Logo" class="project-logo">
-        <h3>Google Ads Projects</h3>
-        <p>Conversion-focused campaigns built using AI-powered performance insights and advanced tracking.</p>
-      </div>
-
-      <div class="project">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Facebook_f_logo_%282019%29.svg/512px-Facebook_f_logo_%282019%29.svg.png" alt="Meta Logo" class="project-logo">
-        <h3>Meta Ads Projects</h3>
-        <p>Creative-led campaigns for brand awareness and local engagement across Meta’s ecosystem.</p>
-      </div>
-
-      <div class="project">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Gmail_icon_%282020%29.svg/512px-Gmail_icon_%282020%29.svg.png" alt="Email Logo" class="project-logo">
-        <h3>Email Marketing</h3>
-        <p>Strategic email sequences designed to boost engagement, retention, and conversions.</p>
-      </div>
-
-      <div class="project">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/512px-LinkedIn_logo_initials.png" alt="LinkedIn Logo" class="project-logo">
-        <h3>LinkedIn Ads</h3>
-        <p>B2B awareness and lead-gen ad setups for startups and service-based businesses.</p>
-      </div>
-
-      <div class="project">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/ChatGPT_logo.svg/512px-ChatGPT_logo.svg.png" alt="AI Logo" class="project-logo">
-        <h3>Generative AI Projects</h3>
-        <p>AI-driven creative workflows integrating ChatGPT, Google AI Studio & Canva automation.</p>
-      </div>
-
-    </div>
-  </section>
-
-  <footer>
-    <p>© 2025 ChawreX | Built by Owais Chawre with 💛 and AI</p>
-  </footer>
-</body>
-</html>
+export default App;
